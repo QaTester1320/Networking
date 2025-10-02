@@ -279,13 +279,146 @@
                             </div>
                         </div>
                     </div>
-                    <!-- All other original detailed sections are assumed to be here -->
+                    
+                    <!-- NEW DETAILED SECTIONS FOR CORE CONCEPTS -->
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">TCP/IP Protocol Suite</h3>
+                        <p class="text-gray-300 mb-4">While the OSI model is a 7-layer theoretical guide, the TCP/IP suite is the 4-layer practical model that the internet actually runs on. It's the real-world implementation.</p>
+                        <div class="matte-teal p-4 rounded-lg">
+                           <h4 class="font-bold text-lg text-white">The Handshake: How TCP Starts a Conversation</h4>
+                           <p class="text-sm">TCP uses a "three-way handshake" to guarantee a reliable connection. 1. You send a "SYN" (Can we talk?). 2. The server replies with "SYN/ACK" (Yes, I'm ready!). 3. You reply with "ACK" (Great, here comes the data!). This prevents data from being sent to a device that isn't listening.</p>
+                        </div>
+                        <div class="matte-red p-4 rounded-lg mt-4">
+                           <h4 class="font-bold text-lg text-white">🚨 Security Alert: Man-in-the-Middle (MitM) Attacks</h4>
+                           <p class="text-sm">An attacker can intercept this handshake, pretending to be the legitimate server. This allows them to read, and even modify, all your communication. This is why encryption (HTTPS, which runs on top of TCP) is vital, as it scrambles the data so the interceptor can't understand it.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                         <h3 class="text-xl font-bold mb-4 text-gradient">IP Addressing: Your Digital Location</h3>
+                         <p class="text-gray-300 mb-4">An IP address is your device's unique identifier on a network. It's how data packets know their final destination. This concept is fundamental to all networking.</p>
+                        <div class="bg-gray-800 p-4 rounded-lg my-6">
+                            <h4 class="font-bold text-center text-white mb-4">Public vs. Private IPs: The Apartment Analogy</h4>
+                            <!-- FIXED RESPONSIVE DIAGRAM -->
+                            <svg viewBox="0 0 400 160" class="mx-auto w-full max-w-2xl">
+                                <text x="20" y="85" font-size="40">🏠</text> <text x="5" y="125" font-size="12" fill="#D1D5DB" class="text-xs sm:text-sm">Your Home</text>
+                                <text x="110" y="45" font-size="20">💻</text><text x="100" y="25" font-size="10" fill="#A78BFA">192.168.1.101</text>
+                                <text x="110" y="85" font-size="20">📱</text><text x="100" y="70" font-size="10" fill="#A78BFA">192.168.1.102</text>
+                                <text x="110" y="125" font-size="20">📺</text><text x="100" y="150" font-size="10" fill="#A78BFA">192.168.1.103</text>
+                                <rect x="180" y="60" width="40" height="40" rx="5" fill="#3B82F6" /> <text x="190" y="85" font-size="20">📡</text><text x="175" y="50" font-size="10" fill="#3B82F6">Router</text>
+                                <text x="340" y="85" font-size="40">☁️</text> <text x="325" y="125" font-size="12" fill="#D1D5DB" class="text-xs sm:text-sm">Internet</text>
+                                <text x="230" y="65" font-size="10" fill="#34D399">Public IP: 203.0.113.55</text>
+                                <path d="M135 45 H 180" stroke="#A78BFA" stroke-width="1" /><path d="M135 85 H 180" stroke="#A78BFA" stroke-width="1" /><path d="M135 125 H 180" stroke="#A78BFA" stroke-width="1" />
+                                <path d="M220 80 H 340" stroke="#34D399" stroke-width="2" stroke-dasharray="4" />
+                            </svg>
+                             <p class="text-sm text-gray-400 mt-2 text-center">Your Router gets one <strong class="text-green-400">Public IP</strong> from your internet provider to talk to the internet. Inside, it gives each device a unique <strong class="text-purple-400">Private IP</strong>. This process, called NAT (Network Address Translation), is crucial for conserving the limited number of IPv4 addresses.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Network Security: The Digital Bodyguards</h3>
+                        <p class="text-gray-300 mb-4">Network security involves the policies and practices adopted to prevent and monitor unauthorized access, misuse, modification, or denial of a computer network and network-accessible resources.</p>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong>Firewalls:</strong> Act as a bouncer at a club, checking every data packet against a set of rules to decide if it's allowed into or out of your network.</li>
+                            <li><strong>Encryption:</strong> Scrambles your data into an unreadable code. Anyone who intercepts it without the secret key sees only gibberish. This is what HTTPS (the 'S' stands for secure) does for your web traffic.</li>
+                            <li><strong>VPNs (Virtual Private Networks):</strong> Create a secure, encrypted tunnel for your data across the public internet, making it seem like you are directly connected to a private, secure network. It's like having a private, armored convoy for your data packets.</li>
+                        </ul>
+                    </div>
+
+                     <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Network Topologies: The City Layouts</h3>
+                        <p class="text-gray-300 mb-4">Topology is the arrangement of the elements (links, nodes, etc.) of a communication network. It's the blueprint for how your devices are connected.</p>
+                         <div class="grid md:grid-cols-2 gap-4 text-center text-sm">
+                             <div class="matte-blue p-3 rounded-lg"><strong>Star:</strong> All devices connect to a central hub (like a switch). Easy to manage, but if the hub fails, everything fails.</div>
+                             <div class="matte-green p-3 rounded-lg"><strong>Bus:</strong> All devices share a single communication line. Old-school and cheap, but a break in the cable can take down the whole network.</div>
+                             <div class="matte-yellow p-3 rounded-lg"><strong>Ring:</strong> Devices are connected in a circle. Data travels in one direction. It's orderly but slow, and one failed device can break the loop.</div>
+                             <div class="matte-purple p-3 rounded-lg"><strong>Mesh:</strong> Devices are interconnected with many redundant connections. Very reliable and self-healing, but complex and expensive. The internet itself is a giant mesh network.</div>
+                         </div>
+                    </div>
+                    
+                     <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Network Devices: The Traffic Controllers</h3>
+                        <p class="text-gray-300 mb-4">These are the physical hardware that makes a network function.</p>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                           <li><strong>Hub:</strong> A "dumb" device that just repeats any signal it receives to all other connected devices. It's like a town crier shouting everything to everyone, creating lots of unnecessary traffic.</li>
+                           <li><strong>Switch:</strong> A "smart" device that learns the MAC addresses of connected devices. It sends data only to the intended recipient. It's like a mail carrier delivering letters to specific house numbers, not the whole street.</li>
+                           <li><strong>Router:</strong> Connects different networks together and directs traffic between them. It's the post office sorting facility, deciding which mail needs to go to a different city (network) and which stays local.</li>
+                        </ul>
+                    </div>
                 </div>
             </details>
             <details>
                 <summary>II. Emerging & Advanced Topics</summary>
                 <div class="details-content space-y-12">
-                     <p>These sections cover the modern technologies that are shaping the future of networking. Dive into the labs below for hands-on experience!</p>
+                     <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Wired vs. Wireless Networks</h3>
+                        <p class="text-gray-300 mb-4">How do you connect to the internet? It's usually one of two ways: a physical cable (wired) or through the air (wireless). Both have unique strengths and weaknesses.</p>
+                        <div class="grid md:grid-cols-2 gap-6 mt-6">
+                            <div class="matte-blue p-4 rounded-lg">
+                                <h4 class="font-bold text-lg text-white">Wired (Ethernet): The Solid Pipe</h4>
+                                <p class="text-sm mt-2"><strong>Analogy:</strong> This is like the main water pipe coming into your house. It's incredibly fast, reliable, and secure because it's a closed, physical connection.<br><br><strong>In-Depth:</strong> Using an Ethernet cable provides a direct connection to your router. This results in the lowest latency (delay), the fastest possible speeds, and is not affected by interference from other devices. It's the preferred choice for tasks where stability is critical, like competitive online gaming or transferring huge files.</p>
+                            </div>
+                            <div class="matte-green p-4 rounded-lg">
+                                <h4 class="font-bold text-lg text-white">Wireless (Wi-Fi): The Sprinkler System</h4>
+                                <p class="text-sm mt-2"><strong>Analogy:</strong> This is like a sprinkler system for your garden. It provides coverage over a wide area without needing individual pipes to every plant, offering incredible convenience.<br><br><strong>In-Depth:</strong> Wi-Fi uses radio waves to transmit data. This is super convenient, allowing phones, laptops, and smart devices to connect freely. However, the signal can be weakened by walls or interference from your neighbor's Wi-Fi, microwaves, and other electronics. Modern standards like Wi-Fi 6 (802.11ax) are incredibly fast, but generally not as stable as a direct wired connection.</p>
+                            </div>
+                        </div>
+                         <div class="matte-red p-4 rounded-lg mt-6">
+                           <h4 class="font-bold text-lg text-white">🚨 Security Alert: Wi-Fi Eavesdropping</h4>
+                           <p class="text-sm">Because Wi-Fi signals travel through the air, a determined attacker can potentially intercept them. This is why strong encryption like <strong class="text-white">WPA3</strong> is non-negotiable. An "open" or unencrypted Wi-Fi network is like shouting your secrets in a crowded room—anyone can listen in. Always use a strong, unique password for your Wi-Fi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">LAN vs. WAN</h3>
+                        <p class="text-gray-300 mb-4">Not all networks are the same size. The terms LAN and WAN define the scope of the network, from a single room to the entire globe.</p>
+                        <div class="bg-gray-800 p-4 rounded-lg my-6">
+                            <h4 class="font-bold text-center text-white mb-4">LAN vs. WAN Visualization</h4>
+                             <svg viewBox="0 0 400 150" class="w-full max-w-3xl mx-auto"><rect x="10" y="25" width="150" height="100" rx="10" stroke="#3B82F6" stroke-width="2" fill="rgba(59,130,246,0.1)"></rect><text x="40" y="80" fill="#3B82F6" font-weight="bold" class="text-sm sm:text-base">LAN 1 (Office)</text><circle cx="50" cy="50" r="5" fill="#D1D5DB"></circle><circle cx="80" cy="90" r="5" fill="#D1D5DB"></circle><circle cx="120" cy="60" r="5" fill="#D1D5DB"></circle><rect x="240" y="25" width="150" height="100" rx="10" stroke="#10B981" stroke-width="2" fill="rgba(16,185,129,0.1)"></rect><text x="270" y="80" fill="#10B981" font-weight="bold" class="text-sm sm:text-base">LAN 2 (Home)</text><circle cx="280" cy="50" r="5" fill="#D1D5DB"></circle><circle cx="310" cy="90" r="5" fill="#D1D5DB"></circle><circle cx="350" cy="60" r="5" fill="#D1D5DB"></circle><path d="M160 75 Q 200 20 240 75" stroke="#D1D5DB" stroke-width="2" fill="none" stroke-dasharray="5"></path><text x="165" y="60" fill="#D1D5DB" font-size="12">WAN (The Internet)</text></svg>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6 mt-6">
+                            <div class="matte-blue p-4 rounded-lg">
+                                <h4 class="font-bold text-lg text-white">LAN (Local Area Network)</h4>
+                                <p class="text-sm mt-2"><strong>Analogy:</strong> Your immediate family inside your house. You can all talk to each other easily and directly without needing to make a long-distance call.<br><br><strong>In-Depth:</strong> A LAN covers a small geographical area like a home, office, or a single building. The devices are all connected to the same networking equipment (like one router/switch). Communication within a LAN is extremely fast. You own and manage the equipment yourself.</p>
+                            </div>
+                            <div class="matte-green p-4 rounded-lg">
+                                <h4 class="font-bold text-lg text-white">WAN (Wide Area Network)</h4>
+                                <p class="text-sm mt-2"><strong>Analogy:</strong> Your extended family spread across the country. To talk to them, you need to use the national telephone system (a WAN).<br><br><strong>In-Depth:</strong> A WAN connects multiple LANs over a large geographical area. The internet is the world's largest WAN. Businesses use WANs to connect their headquarters to branch offices in other cities. These connections are typically leased from telecommunication companies and are slower and more expensive than LAN connections.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Internet of Things (IoT)</h3>
+                        <p class="text-gray-300 mb-4">This is the vast network of physical objects embedded with sensors and software, all connected to the internet. From your smartwatch tracking your steps to a smart fridge telling you you're out of milk, IoT devices are constantly collecting and sharing data to make our lives more convenient and efficient.</p>
+                         <div class="matte-red p-4 rounded-lg mt-4">
+                           <h4 class="font-bold text-lg text-white">🚨 Security Alert: The Weakest Link</h4>
+                           <p class="text-sm">IoT devices are a huge target for hackers because they often have poor security (like default, unchangeable passwords). A hacked smart camera could spy on you, or thousands of hacked devices could be used together in a "botnet" to launch massive Distributed Denial of Service (DDoS) attacks that take down major websites.</p>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Software-Defined Networking (SDN)</h3>
+                        <p class="text-gray-300 mb-4">Traditionally, each network device (like a router) has its own brain (control plane) to make decisions. SDN separates the "brain" from the "body" (data plane). A central software controller acts as the brain for the whole network, making it more flexible, programmable, and easier to manage. It's the difference between each car navigating on its own versus a central, AI-powered traffic control system managing the entire city's flow in real-time.</p>
+                    </div>
+                     <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Network Function Virtualization (NFV)</h3>
+                        <p class="text-gray-300 mb-4">Imagine you need a firewall, a load balancer, and a WAN optimizer. In the past, you'd have to buy three separate, expensive physical boxes. NFV lets you run all these network functions as software (virtual machines) on standard, off-the-shelf servers. It's like instead of buying a separate DVD player, CD player, and VCR, you just run different media apps on your computer. This makes networks cheaper, faster to deploy, and much more flexible.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Machine Learning & AI in Networking</h3>
+                        <p class="text-gray-300 mb-4">Networks are becoming too complex for humans to manage alone. AI and ML are stepping in to be the super-intelligent network managers. They can predict traffic jams before they happen and re-route data, detect subtle signs of a cyberattack that a human would miss, and automatically heal the network when a device fails. It's like having a team of brilliant engineers watching over your network 24/7.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Cloud Networking</h3>
+                        <p class="text-gray-300 mb-4">Instead of buying and managing your own servers in a closet, you rent computing power from massive data centers run by Amazon (AWS), Google (GCP), or Microsoft (Azure). Cloud networking is the set of tools and technologies used to connect your users and offices to these cloud resources securely and efficiently. It's like building a secure, private monorail system from your office directly to your rented space in the cloud, bypassing public traffic.</p>
+                    </div>
+                     <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">5G/6G Technologies</h3>
+                        <p class="text-gray-300 mb-4">5G isn't just "faster 4G." It's a revolutionary leap in three areas: blazing-fast speed (eMBB), ultra-low latency (URLLC), and massive connectivity (mMTC). This enables things like self-driving cars that communicate instantly, surgeons performing remote operations with robotic arms, and smart cities with millions of connected sensors. 6G will push this even further, potentially integrating space-based networks and even sensing capabilities.</p>
+                    </div>
+                     <div class="card">
+                        <h3 class="text-xl font-bold mb-4 text-gradient">Blockchain in Networking</h3>
+                        <p class="text-gray-300 mb-4">Blockchain offers a decentralized, tamper-proof way to record information. In networking, this can be used to create secure and trusted systems without a central authority. For example, it can be used for managing domain names (to prevent hijacking), creating secure roaming agreements between telecom providers, or validating the identity of IoT devices to prevent unauthorized access. It's like having a public, unchangeable notary for all network transactions.</p>
+                    </div>
                 </div>
             </details>
             <details>
@@ -623,13 +756,237 @@
             case 6: startFirewallChallenge(); break;
         }
     }
-    function startFirewallChallenge() {/*...unchanged...*/ }
-    function startDNSCacheHunt() { /* ... unchanged ... */ }
-    function startIPSorter() { /* ... unchanged ... */ }
-    function checkIPSorterCompletion(totalIps) { /* ... unchanged ... */ }
-    function startSubnetSlider() { /* ... unchanged ... */ }
-    function startMACMatchUp() { /* ... unchanged ... */ }
-    function startPortMaster() { /* ... unchanged ... */ }
+    function startFirewallChallenge() {
+         const rules = [
+            { service: "Secure Web Traffic", protocol: "TCP", port: "443", action: "ALLOW" },
+            { service: "Remote Server Login", protocol: "TCP", port: "22", action: "ALLOW" },
+            { service: "File Transfer", protocol: "TCP", port: "21", action: "ALLOW" },
+            { service: "A suspicious scan", protocol: "ANY", port: "ANY", action: "DENY" }
+        ];
+        const currentRule = rules[Math.floor(Math.random() * rules.length)];
+
+        gameContainer.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">Firewall Challenge</h3>
+            <p class="text-sm text-gray-400 mb-4">An incoming packet wants to access your network. Create the correct firewall rule for: <strong class="text-yellow-400">${currentRule.service}</strong></p>
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                    <label class="block mb-2">Action</label>
+                    <select id="fw-action" class="w-full p-2 rounded bg-gray-700 border-gray-600"><option>ALLOW</option><option>DENY</option></select>
+                </div>
+                <div>
+                    <label class="block mb-2">Protocol</label>
+                    <select id="fw-protocol" class="w-full p-2 rounded bg-gray-700 border-gray-600"><option>TCP</option><option>UDP</option><option>ANY</option></select>
+                </div>
+                 <div>
+                    <label class="block mb-2">Port</label>
+                    <input id="fw-port" type="text" placeholder="e.g., 443" class="w-full p-2 rounded bg-gray-700 border-gray-600">
+                </div>
+            </div>
+            <button class="btn btn-primary w-full mt-6" id="fw-check-btn">Apply Rule</button>
+        `;
+
+        document.getElementById('fw-check-btn').addEventListener('click', () => {
+            const action = document.getElementById('fw-action').value;
+            const protocol = document.getElementById('fw-protocol').value;
+            const port = document.getElementById('fw-port').value.trim();
+
+            if(action === currentRule.action && protocol === currentRule.protocol && (port === currentRule.port || currentRule.port === 'ANY')) {
+                showModal("Rule Correct!", "You protected the network properly. Let's try another.", startFirewallChallenge);
+            } else {
+                showModal("Rule Incorrect!", `That rule is wrong. The correct rule was ${currentRule.action} ${currentRule.protocol} ${currentRule.port}. Try again!`);
+            }
+        });
+    }
+    function startDNSCacheHunt() { 
+        const levels = [
+            { "google.com": "172.217.16.174", "facebook.com": "157.240.22.35", "apple.com": "17.253.144.10" },
+            { "amazon.com": "205.251.242.103", "netflix.com": "52.85.151.10", "github.com": "140.82.121.4", "twitter.com": "104.244.42.129" },
+        ];
+        const levelData = levels[currentLevel - 1];
+        if (!levelData) {
+            showModal("You're a DNS Master!", `You finished all levels!`, () => gameContainer.innerHTML = '<h3 class="text-2xl text-center">Play another game?</h3>');
+            return;
+        }
+        const domains = Object.keys(levelData);
+        const targetDomain = domains[Math.floor(Math.random() * domains.length)];
+        const correctIp = levelData[targetDomain];
+        gameContainer.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">DNS Cache Hunt - Level ${currentLevel}</h3>
+            <p class="text-sm text-gray-400 mb-4"><strong>How to Play:</strong> Find the IP for <strong class="text-yellow-400">${targetDomain}</strong> in the cache and type it below.</p>
+            <div class="bg-gray-800 p-4 rounded-lg mb-4">
+                <h4 class="font-bold text-center mb-2">-- DNS CACHE --</h4>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+                    ${domains.map(domain => `<span>${domain}</span><span class="text-right text-gray-300">${levelData[domain]}</span>`).join('')}
+                </div>
+            </div>
+            <input type="text" id="ip-input" class="w-full p-2 border rounded-md bg-gray-700 text-white border-gray-600" placeholder="Type the IP here...">
+            <button class="btn btn-primary mt-6 w-full" id="dns-check-btn">Check IP</button>
+        `;
+        document.getElementById('dns-check-btn').addEventListener('click', () => {
+            const userInput = document.getElementById('ip-input').value.trim();
+            if (userInput === correctIp) {
+                currentLevel++;
+                showModal("Correct!", `You found the right IP!`, startDNSCacheHunt);
+            } else {
+                showModal("Not Quite!", `That's not the correct IP. Check the cache again!`);
+            }
+        });
+    }
+    function startIPSorter() { 
+        const levels = [
+            ["192.168.0.1", "2001:db8::1", "10.0.0.5", "fe80::a00:27ff:fe8a:885e"],
+            ["172.16.254.1", "::1", "8.8.8.8", "2a03:2880::", "127.0.0.1", "2001:4860::8888"],
+        ];
+        const levelData = levels[currentLevel - 1];
+         if (!levelData) {
+            showModal("You're an IP Expert!", `You finished all levels!`, () => gameContainer.innerHTML = '<h3 class="text-2xl text-center">Play another game?</h3>');
+            return;
+        }
+        gameContainer.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">IP Sorter - Level ${currentLevel}</h3>
+            <p class="text-sm text-gray-400 mb-4">Drag the IP addresses to the correct box. IPv4 uses dots, IPv6 uses colons.</p>
+            <div id="ip-source" class="flex flex-wrap justify-center gap-4 p-4 bg-gray-900 rounded-lg min-h-[60px]">
+                ${levelData.map((ip, index) => `<div id="ip-${index}" draggable="true" class="p-2 bg-gray-700 text-white rounded shadow cursor-grab">${ip}</div>`).join('')}
+            </div>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div id="ipv4-bucket" class="p-4 matte-blue rounded-lg min-h-[100px]"><h4 class="font-bold text-blue-300">IPv4 Addresses</h4></div>
+                <div id="ipv6-bucket" class="p-4 matte-green rounded-lg min-h-[100px]"><h4 class="font-bold text-green-300">IPv6 Addresses</h4></div>
+            </div>`;
+        
+        levelData.forEach((ip, index) => {
+            const ipElement = document.getElementById(`ip-${index}`);
+            ipElement.addEventListener('dragstart', e => e.dataTransfer.setData('text/plain', e.target.id));
+        });
+        ['ipv4-bucket', 'ipv6-bucket'].forEach(id => {
+            const bucket = document.getElementById(id);
+            bucket.addEventListener('dragover', e => { e.preventDefault(); bucket.classList.add('bg-gray-700'); });
+            bucket.addEventListener('dragleave', () => bucket.classList.remove('bg-gray-700'));
+            bucket.addEventListener('drop', e => {
+                e.preventDefault();
+                bucket.classList.remove('bg-gray-700');
+                const droppedId = e.dataTransfer.getData('text');
+                const draggedElement = document.getElementById(droppedId);
+                if (draggedElement) {
+                    bucket.appendChild(draggedElement);
+                }
+                if (document.getElementById('ip-source').children.length === 0) {
+                    checkIPSorterCompletion(levelData.length);
+                }
+            });
+        });
+    }
+    function checkIPSorterCompletion(totalIps) { 
+        let correctCount = 0;
+        Array.from(document.getElementById('ipv4-bucket').children).forEach(el => { if (el.textContent.includes('.')) correctCount++; });
+        Array.from(document.getElementById('ipv6-bucket').children).forEach(el => { if (el.textContent.includes(':')) correctCount++; });
+        
+        if (correctCount === totalIps) {
+            currentLevel++;
+            showModal("Level Complete!", `Perfect sorting!`, startIPSorter);
+        } else {
+            showModal("Almost!", `You sorted ${correctCount}/${totalIps} correctly. Let's reset and try again.`, startIPSorter);
+        }
+    }
+    function startSubnetSlider() { 
+         gameContainer.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">Subnet Sandbox</h3>
+            <p class="text-sm text-gray-400 mb-4">Adjust the slider to see how the prefix length (subnet mask) affects the number of available hosts in a network.</p>
+            <div class="p-4 bg-gray-800 rounded-lg">
+                <label for="subnet-slider" class="block font-bold">Prefix Length: <span id="prefix-value">/24</span></label>
+                <input type="range" id="subnet-slider" min="16" max="30" value="24" class="w-full mt-2">
+                <div class="mt-4 text-center">
+                    <p class="text-lg">Available Hosts: <strong id="host-count" class="text-green-400">254</strong></p>
+                </div>
+            </div>`;
+        const slider = document.getElementById('subnet-slider');
+        const prefixValue = document.getElementById('prefix-value');
+        const hostCount = document.getElementById('host-count');
+        slider.addEventListener('input', () => {
+            const prefix = slider.value;
+            prefixValue.textContent = `/${prefix}`;
+            hostCount.textContent = (Math.pow(2, 32 - prefix) - 2).toLocaleString();
+        });
+    }
+    function startMACMatchUp() {
+        const items = [ { name: 'Laptop', icon: '💻' }, { name: 'Phone', icon: '📱' }, { name: 'Router', icon: '📡' }, { name: 'Smart TV', icon: '📺' }, { name: 'Printer', icon: '🖨️' }, { name: 'Server', icon: '💾' } ];
+        if (currentLevel > 3) {
+            showModal("You're a MAC Address Whiz!", "You finished all levels!", () => gameContainer.innerHTML = '<h3 class="text-2xl text-center">Play another game?</h3>');
+            return;
+        }
+        let levelItems = items.slice(0, 2 * (currentLevel + 1));
+        const cards = [];
+        levelItems.forEach(item => {
+            const mac = `00:1A:2B:${Math.floor(Math.random()*90+10)}:${Math.floor(Math.random()*90+10)}:${Math.floor(Math.random()*90+10)}`;
+            cards.push({ value: item.name, content: `${item.icon}<br>${item.name}` });
+            cards.push({ value: item.name, content: mac });
+        });
+        cards.sort(() => Math.random() - 0.5);
+        gameContainer.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">MAC Match-Up - Level ${currentLevel}</h3>
+            <p class="text-sm text-gray-400 mb-4">Click cards to find matching pairs of devices and their MAC addresses.</p>
+            <div id="mac-grid" class="grid ${currentLevel === 1 ? 'grid-cols-2' : 'grid-cols-4'} gap-4">
+            ${cards.map((card) => `
+                <div class="game-card h-24 flex items-center justify-center p-2 bg-gray-800 rounded-lg cursor-pointer" data-value="${card.value}" style="perspective: 1000px;">
+                    <div class="flipper w-full h-full" style="transition: transform 0.6s; transform-style: preserve-3d;">
+                        <div class="front absolute w-full h-full flex items-center justify-center bg-gray-700 rounded-lg text-4xl" style="backface-visibility: hidden;">?</div>
+                        <div class="back absolute w-full h-full flex items-center justify-center text-white text-sm" style="backface-visibility: hidden; transform: rotateY(180deg);">${card.content}</div>
+                    </div>
+                </div>`).join('')}
+            </div>`;
+
+        let firstCard = null, lockBoard = false, matchedPairs = 0;
+        document.querySelectorAll('.game-card').forEach(card => card.addEventListener('click', () => {
+            if (lockBoard || card.classList.contains('matched') || card === firstCard) return;
+            card.querySelector('.flipper').style.transform = 'rotateY(180deg)';
+            if (!firstCard) { firstCard = card; return; }
+            lockBoard = true;
+            if (firstCard.dataset.value === card.dataset.value) {
+                [firstCard, card].forEach(c => c.classList.add('matched'));
+                matchedPairs++;
+                [firstCard, lockBoard] = [null, false];
+                if (matchedPairs === levelItems.length) {
+                    currentLevel++;
+                    showModal("Level Complete!", "You've matched them all!", startMACMatchUp);
+                }
+            } else {
+                setTimeout(() => {
+                    [firstCard, card].forEach(c => c.querySelector('.flipper').style.transform = '');
+                    [firstCard, lockBoard] = [null, false];
+                }, 1200);
+            }
+        }));
+    }
+    function startPortMaster() {
+        const portsData = { '80': 'HTTP (Web)', '443': 'HTTPS (Secure Web)', '21': 'FTP (Files)', '22': 'SSH (Secure Shell)', '25': 'SMTP (Email)', '53': 'DNS' };
+        const allPorts = Object.keys(portsData);
+        if (currentLevel > 3) {
+             showModal("You're a Port Master!", "You've finished all levels!", () => gameContainer.innerHTML = '<h3 class="text-2xl text-center">Play another game?</h3>');
+             return;
+        }
+        let targetPort = allPorts[Math.floor(Math.random() * allPorts.length)];
+        let displayPorts = [targetPort];
+        while (displayPorts.length < currentLevel + 2) {
+            let p = allPorts[Math.floor(Math.random() * allPorts.length)];
+            if (!displayPorts.includes(p)) displayPorts.push(p);
+        }
+        displayPorts.sort(() => Math.random() - 0.5);
+
+        gameContainer.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">Port Master - Level ${currentLevel}</h3>
+            <p class="text-sm text-gray-400 mb-4">A service request is coming in! Click the correct port for that service.</p>
+            <div class="p-4 bg-yellow-900 bg-opacity-50 text-yellow-300 font-bold text-xl rounded-lg mb-6 text-center">Request for: ${portsData[targetPort]}</div>
+            <div id="ports-grid" class="grid grid-cols-3 gap-4">
+                ${displayPorts.map(p => `<button class="p-6 bg-blue-900 bg-opacity-50 border border-blue-700 rounded-lg font-bold hover:bg-blue-800" onclick="checkPort('${p}', '${targetPort}')">${p}</button>`).join('')}
+            </div>`;
+    }
+    function checkPort(clicked, correct) {
+        if (clicked === correct) {
+            currentLevel++;
+            showModal("Correct!", "You've opened the right port!", startPortMaster);
+        } else {
+            showModal("Incorrect!", `That's the wrong port. Let's try another request.`, startPortMaster);
+        }
+    }
 
 
     /* --- OSI Lab Logic --- */
@@ -676,7 +1033,9 @@
 
     /* --- IP Subnet Calculator Logic --- */
     function calculateSubnet() {
-        // ... unchanged from previous version ...
+        const ipInput=document.getElementById('ip-calc-input').value;const cidrInput=parseInt(document.getElementById('ip-calc-cidr').value,10);const resultsDiv=document.getElementById('ip-calc-results');if(!/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(ipInput)||isNaN(cidrInput)||cidrInput<0||cidrInput>32){resultsDiv.textContent="Error: Please enter a valid IPv4 address and a CIDR prefix (0-32).";return}
+        const ipParts=ipInput.split('.').map(Number);if(ipParts.some(part=>part<0||part>255)){resultsDiv.textContent="Error: Each part of the IP address must be between 0 and 255.";return}
+        const ipAsInt=(ipParts[0]<<24)|(ipParts[1]<<16)|(ipParts[2]<<8)|ipParts[3];const subnetMaskInt=(-1<<(32-cidrInput))>>>0;const networkAddressInt=(ipAsInt&subnetMaskInt)>>>0;const broadcastAddressInt=(networkAddressInt|~subnetMaskInt)>>>0;const intToIp=(int)=>`${(int>>>24)}.${(int>>16)&255}.${(int>>8)&255}.${int&255}`;const networkAddress=intToIp(networkAddressInt);const broadcastAddress=intToIp(broadcastAddressInt);const subnetMask=intToIp(subnetMaskInt);const firstHost=cidrInput<31?intToIp(networkAddressInt+1):'N/A';const lastHost=cidrInput<31?intToIp(broadcastAddressInt-1):'N/A';const totalHosts=cidrInput<31?Math.pow(2,32-cidrInput)-2:0;resultsDiv.textContent=`Address:          ${ipInput}/${cidrInput}\nNetwork Address:  ${networkAddress}\nBroadcast Address: ${broadcastAddress}\nSubnet Mask:      ${subnetMask}\nFirst Host:       ${firstHost}\nLast Host:        ${lastHost}\nUsable Hosts:     ${totalHosts.toLocaleString()}`
     }
 
 
@@ -689,18 +1048,57 @@
     ];
 
     function populatePacketTraceQuestions() {
-        // ... unchanged from previous version ...
+        const grid = document.getElementById('trace-analysis-grid');
+        grid.innerHTML = '';
+        traceQuestions.forEach(q => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <label class="font-bold text-${q.color}-400">${q.label}</label>
+                <input type="text" id="trace-${q.id}" class="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded" placeholder="Your answer...">
+                <p id="feedback-${q.id}" class="text-xs mt-1 h-8"></p>
+            `;
+            grid.appendChild(div);
+        });
     }
 
     function checkPacketTrace() {
-        // ... unchanged from previous version ...
+        let allCorrect = true;
+        traceQuestions.forEach(q => {
+            const input = document.getElementById(`trace-${q.id}`);
+            const feedback = document.getElementById(`feedback-${q.id}`);
+            const userAnswer = input.value.trim();
+            const correctAnswer = q.answer;
+
+            if (userAnswer.localeCompare(correctAnswer, undefined, { sensitivity: 'base' }) === 0) {
+                feedback.textContent = 'Correct!';
+                feedback.className = 'text-xs mt-1 h-8 text-green-400';
+                input.classList.remove('border-red-500');
+                input.classList.add('border-green-500');
+            } else {
+                let explanation = '';
+                if(q.id === 'q1') explanation = 'This is the hardware address of the next hop (the router).';
+                if(q.id === 'q2') explanation = 'This is the public address of the web server.';
+                if(q.id === 'q3') explanation = 'Port 80 is standard for HTTP web traffic.';
+                if(q.id === 'q4') explanation = 'The user is requesting the main page of the site.';
+                
+                feedback.innerHTML = `Incorrect. The answer is <strong class="text-white">${correctAnswer}</strong>. ${explanation}`;
+                feedback.className = 'text-xs mt-1 h-8 text-red-400';
+                input.classList.add('border-red-500');
+                input.classList.remove('border-green-500');
+                allCorrect = false;
+            }
+        });
+
+        if(allCorrect) {
+            showModal("Analysis Complete!", "Excellent work, Detective! You've successfully dissected the packet.");
+        }
     }
 
     /* --- Ultimate Lab Logic (Multi-Level) --- */
     const ultimateLabScenarios = [
         {
             level: 1,
-            scenario: "You are the new Network Engineer for a startup with 3 departments: Engineering (50 devices), Sales (25 devices), and Management (10 devices). You've been given the IP block <code class='bg-gray-800 p-1 rounded'>10.10.0.0/24</code>.",
+            scenario: "You are the new Network Engineer for a startup with 3 departments: Engineering (50 devices), Sales (25 devices), and Management (10 devices). You've_been given the IP block <code class='bg-gray-800 p-1 rounded'>10.10.0.0/24</code>.",
             topology: { question: "Considering scalability and ease of management, which topology is best for a modern office environment?", answer: "Star", hint: "Think about which design uses a central device like a switch to make adding new computers easy." },
             subnet: { question: "Using the <code class='bg-gray-800 p-1 rounded'>10.10.0.0/24</code> block, calculate the correct CIDR prefix for each department's subnet.", departments: [{name: "Engineering", devices: 50, answer: "26"}, {name: "Sales", devices: 25, answer: "27"}, {name: "Management", devices: 10, answer: "28"}], hint: "Remember: 2^(32-prefix) >= (devices + 2). A /26 gives 64 addresses, /27 gives 32, and /28 gives 16." },
             protocol: { question: "A user in the Sales department sends an email to a client. What is the primary protocol used at each layer for this action?", appAnswer: "SMTP", transportAnswer: "TCP", hint: "Email needs reliable, guaranteed delivery. Which transport protocol provides that? What's the specific protocol for *sending* mail?" }
